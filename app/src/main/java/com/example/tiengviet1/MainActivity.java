@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     ImageView btnChucai, btnTuvung, btnTho, btnKiemtra;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,9 +19,12 @@ public class MainActivity extends AppCompatActivity {
 
         setUpView();
 
+
         btnChucai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                btnChucai.startAnimation(bounceAnim);
                 changeActivity(AlphabetActivity.class);
             }
         });
@@ -26,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         btnTuvung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                btnTuvung.startAnimation(bounceAnim);
                 changeActivity(VocabularyActivity.class);
             }
         });
@@ -33,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         btnTho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                btnTho.startAnimation(bounceAnim);
                 changeActivity(PoemActivity.class);
             }
         });
@@ -40,12 +50,14 @@ public class MainActivity extends AppCompatActivity {
         btnKiemtra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                btnKiemtra.startAnimation(bounceAnim);
                 changeActivity(QuizActivity.class);
             }
         });
     }
 
-    private void setUpView(){
+    private void setUpView() {
         btnChucai = findViewById(R.id.imgChucai);
         btnTuvung = findViewById(R.id.imgTuvung);
         btnTho = findViewById(R.id.imgTho);
@@ -77,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
-    private void changeActivity(Class activity){
-        startActivity(new Intent(MainActivity.this,activity));
+    private void changeActivity(Class activity) {
+        startActivity(new Intent(MainActivity.this, activity));
     }
 }
