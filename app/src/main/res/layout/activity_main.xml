@@ -6,64 +6,192 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imgKiemtra"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgTho"
-        app:layout_constraintTop_toBottomOf="@+id/imgTuvung"
-        app:srcCompat="@drawable/btn_kiemtra" />
-
-    <ImageView
-        android:id="@+id/imgTho"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toStartOf="@+id/imgKiemtra"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgChucai"
-        app:srcCompat="@drawable/btn_tho" />
-
-    <ImageView
-        android:id="@+id/imgChucai"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toStartOf="@+id/imgTuvung"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/btn_chucai" />
-
-    <ImageView
-        android:id="@+id/imgTuvung"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgChucai"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/btn_tuvung" />
-
-    <ImageView
-        android:id="@+id/imageView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutContent"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/head" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/lblChucai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Bảng chữ cái"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="@+id/imgChucai"
+            app:layout_constraintStart_toStartOf="@+id/imgChucai"
+            app:layout_constraintTop_toBottomOf="@+id/imgChucai" />
+
+        <TextView
+            android:id="@+id/lblTuvung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Học từ vựng"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imgTuvung"
+            app:layout_constraintTop_toBottomOf="@+id/imgTuvung" />
+
+        <TextView
+            android:id="@+id/lblTho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Thơ"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="@+id/imgTho"
+            app:layout_constraintStart_toStartOf="@+id/imgTho"
+            app:layout_constraintTop_toBottomOf="@+id/imgTho" />
+
+        <TextView
+            android:id="@+id/lblKiemtra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Kiểm tra"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imgKiemtra"
+            app:layout_constraintTop_toBottomOf="@+id/imgKiemtra" />
+
+        <ImageView
+            android:id="@+id/imgKiemtra"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imgTho"
+            app:layout_constraintTop_toBottomOf="@+id/lblTuvung"
+            app:srcCompat="@drawable/btn_kiemtra" />
+
+        <ImageView
+            android:id="@+id/imgTho"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toStartOf="@+id/imgKiemtra"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblChucai"
+            app:srcCompat="@drawable/btn_tho" />
+
+        <ImageView
+            android:id="@+id/imgChucai"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="32dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toStartOf="@+id/imgTuvung"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameHead"
+            app:srcCompat="@drawable/btn_chucai" />
+
+        <ImageView
+            android:id="@+id/imgTuvung"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imgChucai"
+            app:layout_constraintTop_toBottomOf="@+id/frameHead"
+            app:srcCompat="@drawable/btn_tuvung" />
+
+
+        <FrameLayout
+            android:id="@+id/frameHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgSky"
+                android:layout_width="wrap_content"
+                android:layout_height="220dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/cloud" />
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="210dp"
+                android:layout_marginTop="40dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/bird" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="120dp"
+                android:text="Danh Mục"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <FrameLayout
+            android:id="@+id/frameBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgGrass"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_gravity="bottom"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/grass" />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_gravity="right|top"
+                android:layout_marginBottom="50dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/kids" />
+
+            <LinearLayout
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bai hoc"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tro choi"/>
+            </LinearLayout>
+        </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
