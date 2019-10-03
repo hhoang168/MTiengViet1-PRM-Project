@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         btnChucai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
                 btnChucai.startAnimation(bounceAnim);
                 changeActivity(AlphabetActivity.class);
             }
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btnTuvung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
                 btnTuvung.startAnimation(bounceAnim);
                 changeActivity(VocabularyActivity.class);
             }
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         btnTho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
                 btnTho.startAnimation(bounceAnim);
                 changeActivity(PoemActivity.class);
             }
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         btnKiemtra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
                 btnKiemtra.startAnimation(bounceAnim);
                 changeActivity(QuizActivity.class);
             }
