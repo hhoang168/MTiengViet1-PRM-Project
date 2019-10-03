@@ -4,13 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     ImageView btnChucai, btnTuvung, btnTho, btnKiemtra;
+    private final String ALPHABET_URL = "https://prm391.herokuapp.com/api/alphabetImage";
+    private ArrayList<String> imagePaths = new ArrayList<>();
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
                 btnChucai.startAnimation(bounceAnim);
-                changeActivity(AlphabetActivity.class);
+                volleyJsonArrayRequest(ALPHABET_URL);
+                Intent intent = new Intent(MainActivity.this,AlphabetActivity.class);
+                intent.putStringArrayListExtra("imagePaths",imagePaths);
+                changeActivity(intent);
             }
         });
 
@@ -34,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
                 btnTuvung.startAnimation(bounceAnim);
-                changeActivity(VocabularyActivity.class);
+//                changeActivity(VocabularyActivity.class);
             }
         });
 
@@ -43,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
                 btnTho.startAnimation(bounceAnim);
-                changeActivity(PoemActivity.class);
+//                changeActivity(PoemActivity.class);
             }
         });
 
@@ -52,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
                 btnKiemtra.startAnimation(bounceAnim);
-                changeActivity(QuizActivity.class);
+//                changeActivity(QuizActivity.class);
             }
         });
     }
@@ -89,7 +107,29 @@ public class MainActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
-    private void changeActivity(Class activity) {
-        startActivity(new Intent(MainActivity.this, activity));
+    private void changeActivity(Intent intent) {
+        startActivity(intent);
+    }
+
+    private void volleyJsonArrayRequest(String url) {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        imagePaths.add(response.get(i).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+//                Log.e(TAG, "JsonArrayRequest onResponse: " + response.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "JsonArrayRequest onErrorResponse: " + error.getMessage());
+            }
+        });
+        VolleySingleton.getInstance(this).getRequestQueue().add(jsonArrayRequest);
     }
 }
