@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Bảng chữ cái"
-            android:textSize="25sp"
+            android:textColor="#090808"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/imgChucai"
             app:layout_constraintStart_toStartOf="@+id/imgChucai"
             app:layout_constraintTop_toBottomOf="@+id/imgChucai" />
@@ -31,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Học từ vựng"
-            android:textSize="25sp"
+            android:textColor="#0F0F0F"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/imgTuvung"
             app:layout_constraintTop_toBottomOf="@+id/imgTuvung" />
@@ -42,7 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Thơ"
-            android:textSize="25sp"
+            android:textColor="#161515"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/imgTho"
             app:layout_constraintStart_toStartOf="@+id/imgTho"
             app:layout_constraintTop_toBottomOf="@+id/imgTho" />
@@ -53,7 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Kiểm tra"
-            android:textSize="25sp"
+            android:textColor="#090909"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/imgKiemtra"
             app:layout_constraintTop_toBottomOf="@+id/imgKiemtra" />
@@ -138,6 +142,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="120dp"
                 android:text="Danh Mục"
+                android:textColor="#0F0F0F"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </FrameLayout>
@@ -176,22 +181,16 @@
                 app:srcCompat="@drawable/kids" />
 
             <LinearLayout
-                android:layout_marginLeft="80dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="40dp"
                 android:orientation="horizontal">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bai hoc"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tro choi"/>
+
             </LinearLayout>
+
         </FrameLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
