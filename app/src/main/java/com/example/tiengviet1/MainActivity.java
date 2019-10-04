@@ -23,9 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ImageView btnChucai, btnTuvung, btnTho, btnKiemtra;
-    private final String ALPHABET_URL = "https://prm391.herokuapp.com/api/alphabetImage";
-    private ArrayList<String> imagePaths = new ArrayList<>();
-    private static final String TAG = "MainActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +37,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                bounceAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        Intent intent = new Intent(MainActivity.this, AlphabetActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
                 btnChucai.startAnimation(bounceAnim);
-                volleyJsonArrayRequest(ALPHABET_URL);
-                Intent intent = new Intent(MainActivity.this,AlphabetActivity.class);
-                intent.putStringArrayListExtra("imagePaths",imagePaths);
-                changeActivity(intent);
             }
         });
 
@@ -51,8 +62,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                bounceAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        Intent intent = new Intent(MainActivity.this, VocabularyActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
                 btnTuvung.startAnimation(bounceAnim);
-//                changeActivity(VocabularyActivity.class);
             }
         });
 
@@ -60,8 +87,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                bounceAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        Intent intent = new Intent(MainActivity.this, PoemActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
                 btnTho.startAnimation(bounceAnim);
-//                changeActivity(PoemActivity.class);
             }
         });
 
@@ -69,8 +112,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Animation bounceAnim = new AnimationUtils().loadAnimation(MainActivity.this, R.anim.bounce);
+                bounceAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        Intent intent = new Intent(MainActivity.this, QuizActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
                 btnKiemtra.startAnimation(bounceAnim);
-//                changeActivity(QuizActivity.class);
             }
         });
     }
@@ -105,31 +164,5 @@ public class MainActivity extends AppCompatActivity {
                         // Hide the nav bar and status bar
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
-    }
-
-    private void changeActivity(Intent intent) {
-        startActivity(intent);
-    }
-
-    private void volleyJsonArrayRequest(String url) {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        imagePaths.add(response.get(i).toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-//                Log.e(TAG, "JsonArrayRequest onResponse: " + response.toString());
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "JsonArrayRequest onErrorResponse: " + error.getMessage());
-            }
-        });
-        VolleySingleton.getInstance(this).getRequestQueue().add(jsonArrayRequest);
     }
 }
