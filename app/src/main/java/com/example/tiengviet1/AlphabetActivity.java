@@ -8,20 +8,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AlphabetActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private String url = "https://prm391.herokuapp.com/api/alphabetImage";
+    private String url = "https://prm391.herokuapp.com/api/alphabet";
     private static final String TAG = "AlphabetActivity";
 
     @Override
@@ -40,17 +44,19 @@ public class AlphabetActivity extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                List<String> tmpList = new ArrayList<>();
+                List<AlphabetDTO> tmpList = new ArrayList<>();
                 try {
                     for (int i = 0; i < response.length(); i++) {
-                        tmpList.add(response.getString(i));
+                        JSONObject mObj = response.getJSONObject(i);
+                        AlphabetDTO mAlphabetDTO = new Gson().fromJson(mObj.toString(), AlphabetDTO.class);
+                        tmpList.add(mAlphabetDTO);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                AlphabetAdapter adapter = new AlphabetAdapter(AlphabetActivity.this,tmpList);
+                AlphabetAdapter adapter = new AlphabetAdapter(AlphabetActivity.this, tmpList);
                 mRecyclerView
-                        .setLayoutManager(new GridLayoutManager(AlphabetActivity.this,4));
+                        .setLayoutManager(new GridLayoutManager(AlphabetActivity.this, 4));
                 mRecyclerView.setAdapter(adapter);
             }
         }, new Response.ErrorListener() {

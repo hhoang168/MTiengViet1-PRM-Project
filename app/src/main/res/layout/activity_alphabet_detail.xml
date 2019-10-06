@@ -30,6 +30,7 @@
             android:id="@+id/txtChuhoa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAllCaps="true"
             android:text="A"
             android:textColor="@color/black"
             android:textSize="80sp" />
@@ -115,6 +116,7 @@
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
+            android:onClick="playAudio"
             app:srcCompat="@drawable/ic_volume" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -154,6 +156,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/baloo_thambi"
+                    android:textAllCaps="true"
                     android:text="A"
                     android:textColor="@color/colorAccent"
                     android:textSize="30sp" />

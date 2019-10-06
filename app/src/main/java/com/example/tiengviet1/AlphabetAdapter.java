@@ -16,11 +16,11 @@ import java.util.List;
 
 public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.ViewHolder> {
     Context mContext;
-    List<String> imagePaths;
+    List<AlphabetDTO> alphabetList;
 
-    public AlphabetAdapter(Context mContext, List<String> imagePaths) {
+    public AlphabetAdapter(Context mContext, List<AlphabetDTO> alphabetList) {
         this.mContext = mContext;
-        this.imagePaths = imagePaths;
+        this.alphabetList = alphabetList;
     }
 
     @NonNull
@@ -32,13 +32,14 @@ public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String url = imagePaths.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        String url = alphabetList.get(position).getThumbnail();
         Glide.with(mContext).load(url).into(holder.imgAlphabet);
         holder.imgAlphabet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext,AlphabetDetailActivity.class);
+                intent.putExtra("dto",alphabetList.get(position));
                 mContext.startActivity(intent);
             }
         });
@@ -46,7 +47,7 @@ public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return imagePaths.size();
+        return alphabetList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
