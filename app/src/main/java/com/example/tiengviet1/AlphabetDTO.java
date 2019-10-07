@@ -63,6 +63,6 @@ public class AlphabetDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "ID:" + id + " - Letter:" + letter;
+        return "IDx:" + id + " - Letter:" + letter;
     }
 }

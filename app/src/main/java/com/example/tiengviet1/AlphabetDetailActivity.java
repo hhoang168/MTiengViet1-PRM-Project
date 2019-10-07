@@ -11,12 +11,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+import java.util.List;
+
 public class AlphabetDetailActivity extends AppCompatActivity {
     private TextView txtChuThuong, txtChuHoa, txtLetter;
     private ImageView imgChuThuong, imgChuHoa;
     private ImageButton imgSound;
     private AlphabetDTO alphabetDTO;
-    String[] listLetter =
+    private String urlChuThuong = "";
+    private String urlChuHoa = "";
+    private String[] listLetter =
             {"a", "ă", "â", "b", "c", "d", "đ", "e",
                     "ê", "g", "h", "i", "k", "l", "m", "n",
                     "o", "ô", "ơ", "p", "q", "r", "s", "t",
@@ -31,6 +37,14 @@ public class AlphabetDetailActivity extends AppCompatActivity {
 
         Intent intent = this.getIntent();
         alphabetDTO = (AlphabetDTO) intent.getSerializableExtra("dto");
+        List<ImageDTO> tmpList = alphabetDTO.getListImages();
+        for (ImageDTO dto : tmpList) {
+            if (dto.getDescription().contains("viet_hoa")) {
+                urlChuHoa = dto.getImgPath();
+            } else if (dto.getDescription().contains("viet_thuong")) {
+                urlChuThuong = dto.getImgPath();
+            }
+        }
 
         setUpView();
     }
@@ -48,6 +62,8 @@ public class AlphabetDetailActivity extends AppCompatActivity {
         txtChuHoa.setText(alphabetDTO.getLetter());
         txtChuThuong.setText(alphabetDTO.getLetter());
         txtLetter.setText(alphabetDTO.getLetter());
+        Glide.with(this).load(urlChuHoa).into(imgChuHoa);
+        Glide.with(this).load(urlChuThuong).into(imgChuThuong);
     }
 
     public void playAudio(View view) {
@@ -64,5 +80,8 @@ public class AlphabetDetailActivity extends AppCompatActivity {
             }
         });
         mediaPlayer.start();
+    }
+
+    public void getBack(View view) {
     }
 }

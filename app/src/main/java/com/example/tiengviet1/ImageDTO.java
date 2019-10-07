@@ -5,16 +5,16 @@ import java.io.Serializable;
 public class ImageDTO implements Serializable {
     private int id;
     private String audioPath;
-    private String imagePath;
+    private String imgPath;
     private String description;
 
     public ImageDTO() {
     }
 
-    public ImageDTO(int id, String audioPath, String imagePath, String description) {
+    public ImageDTO(int id, String imgPath, String audioPath, String description) {
         this.id = id;
         this.audioPath = audioPath;
-        this.imagePath = imagePath;
+        this.imgPath = imgPath;
         this.description = description;
     }
 
@@ -34,12 +34,12 @@ public class ImageDTO implements Serializable {
         this.audioPath = audioPath;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public String getImgPath() {
+        return imgPath;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 
     public String getDescription() {
