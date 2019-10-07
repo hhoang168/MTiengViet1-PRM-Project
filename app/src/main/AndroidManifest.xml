@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".VocabularyDetailActivity"></activity>
+        <activity android:name=".PoemDetailActivity"></activity>
+        <activity android:name=".VocabularyDetailActivity" />
         <activity android:name=".AlphabetDetailActivity" />
         <activity android:name=".QuizActivity" />
         <activity android:name=".PoemActivity" />

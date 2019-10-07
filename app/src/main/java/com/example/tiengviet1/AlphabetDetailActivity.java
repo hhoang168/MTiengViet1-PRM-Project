@@ -47,6 +47,7 @@ public class AlphabetDetailActivity extends AppCompatActivity {
         }
 
         setUpView();
+        playAudio();
     }
 
     private void createView() {
@@ -66,7 +67,7 @@ public class AlphabetDetailActivity extends AppCompatActivity {
         Glide.with(this).load(urlChuThuong).into(imgChuThuong);
     }
 
-    public void playAudio(View view) {
+    private void playAudio() {
         final MediaPlayer mediaPlayer = MediaPlayer.create(this, Uri.parse(alphabetDTO.getAudioPath()));
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -80,6 +81,10 @@ public class AlphabetDetailActivity extends AppCompatActivity {
             }
         });
         mediaPlayer.start();
+    }
+
+    public void clickToPlayAudio(View view){
+        playAudio();
     }
 
     public void getBack(View view) {

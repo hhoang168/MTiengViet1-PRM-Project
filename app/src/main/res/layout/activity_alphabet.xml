@@ -17,18 +17,35 @@
 
 
         <FrameLayout
-            android:id="@+id/frameHead"
+            android:id="@+id/headLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="220dp"
+            android:background="@drawable/cloud"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imgSky"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="220dp"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/cloud" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|top"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="50dp"
+                android:onClick="clickToGetBack"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:scaleType="fitXY"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_arrow_back" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trở về"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -100,7 +100,7 @@
             app:layout_constraintEnd_toStartOf="@+id/imgTuvung"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frameHead"
+            app:layout_constraintTop_toBottomOf="@+id/headLayout"
             app:srcCompat="@drawable/btn_chucai" />
 
         <ImageView
@@ -113,12 +113,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/imgChucai"
-            app:layout_constraintTop_toBottomOf="@+id/frameHead"
+            app:layout_constraintTop_toBottomOf="@+id/headLayout"
             app:srcCompat="@drawable/btn_tuvung" />
 
 
         <FrameLayout
-            android:id="@+id/frameHead"
+            android:id="@+id/headLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +163,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <FrameLayout
-            android:id="@+id/frameBottom"
+            android:id="@+id/bottomLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
