@@ -2,11 +2,12 @@ package com.example.tiengviet1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -16,29 +17,30 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-public class VocabularyActivity extends AppCompatActivity {
+public class VocabularyDetailActivity extends AppCompatActivity {
 
-    private ListView mListView;
     private String vocabularyUrl = "https://prm391.herokuapp.com/api/vocabulary";
     private static final String TAG = "VocabularyActivity";
-    Button btnCard;
-
+    private ListView mListViewDetail;
+    TextView txtBaiHoc;
+    String findTopic = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vocabulary);
+        setContentView(R.layout.activity_vocabulary_detail);
+        Intent intent = this.getIntent();
         setUpView();
+        findTopic = intent.getStringExtra("hidetopic");
+        txtBaiHoc.setText(findTopic.replace("_",": "));
         VolleyJsonArrayRequest(vocabularyUrl);
     }
 
-    public void setUpView() {
-        mListView = findViewById(R.id.mListView);
+    private void setUpView() {
+        mListViewDetail = findViewById(R.id.mListViewDetail);
+        txtBaiHoc = findViewById(R.id.txtBaiHoc);
     }
+
     private void VolleyJsonArrayRequest(String url) {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
@@ -62,13 +64,16 @@ public class VocabularyActivity extends AppCompatActivity {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-                List<VocabularyDTO> tempList = new ArrayList<>();
-                Set<VocabularyDTO> uniqueElements = new HashSet<VocabularyDTO>(vocabularies);
-                tempList.clear();
-                tempList.addAll(uniqueElements);
-                Collections.sort(tempList);
-                VocabularyAdapter vocabularyAdapter = new VocabularyAdapter(VocabularyActivity.this,tempList);
-                mListView.setAdapter(vocabularyAdapter);
+                ArrayList<VocabularyDTO> foundList = new ArrayList<>();
+                for (int i = 0; i < vocabularies.size(); i++){
+                    String topic = vocabularies.get(i).getTopic();
+                    if(findTopic.contains(topic)) {
+                        foundList.add(vocabularies.get(i));
+                    }
+                }
+                System.out.println(foundList.size() + "Size");
+                VocabularyDetailAdapter vocabularyAdapter = new VocabularyDetailAdapter(VocabularyDetailActivity.this,foundList);
+                mListViewDetail.setAdapter(vocabularyAdapter);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -103,4 +108,6 @@ public class VocabularyActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
+
+
 }

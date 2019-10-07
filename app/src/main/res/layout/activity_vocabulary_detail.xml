@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".HocTuVung">
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="300dp"
@@ -13,6 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cloud"/>
+
     <ImageView
         android:layout_width="430dp"
         android:layout_height="118dp"
@@ -22,27 +24,47 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
     <TextView
+        android:id="@+id/txtBaiHoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="200dp"
-        android:layout_marginBottom="708dp"
-        android:text="Học Từ Vựng"
-        android:fontFamily="@font/sf_pro_display_bold"
-        android:textSize="30dp"
+        android:layout_marginEnd="235dp"
+        android:layout_marginBottom="684dp"
+        android:text="Bài 3: be bé"
+        android:textSize="25dp"
         android:textStyle="bold"
+        android:fontFamily="@font/sf_pro_display_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <Button
+        android:layout_width="105dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="684dp"
+        android:scaleType="fitXY"
+        android:text="Mục Lục"
+        android:drawableRight="@drawable/outline_menu_white_18dp"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:background="#2196F3"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/btnMucluc"/>
+
     <ListView
-        android:id="@+id/mListView"
+        android:id="@+id/mListViewDetail"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_marginBottom="80dp"
-        android:scrollbars="vertical"
+        android:layout_height="660dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
