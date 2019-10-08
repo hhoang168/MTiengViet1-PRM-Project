@@ -1,11 +1,14 @@
 package com.example.tiengviet1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,23 +25,50 @@ public class VocabularyDetailActivity extends AppCompatActivity {
 
     private String vocabularyUrl = "https://prm391.herokuapp.com/api/vocabulary";
     private static final String TAG = "VocabularyActivity";
-    private ListView mListViewDetail;
+    private PagerAdapter pagerAdapter = null;
+    private ViewPager mViewPager;
     TextView txtBaiHoc;
+    Button btnMucLuc;
     String findTopic = "";
+    Button btnNext, btnPre;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocabulary_detail);
-        Intent intent = this.getIntent();
+        final Intent intent = this.getIntent();
         setUpView();
         findTopic = intent.getStringExtra("hidetopic");
-        txtBaiHoc.setText(findTopic.replace("_",": "));
+        txtBaiHoc.setText("Bài " + findTopic);
         VolleyJsonArrayRequest(vocabularyUrl);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
+            }
+        });
+
+        btnPre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
+            }
+        });
+        btnMucLuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backIntent = new Intent(VocabularyDetailActivity.this, VocabularyActivity.class);
+                startActivity(backIntent);
+            }
+        });
     }
 
     private void setUpView() {
-        mListViewDetail = findViewById(R.id.mListViewDetail);
+        mViewPager = (ViewPager) findViewById(R.id.mViewPager);
         txtBaiHoc = findViewById(R.id.txtBaiHoc);
+        btnNext = findViewById(R.id.btnNext);
+        btnPre = findViewById(R.id.btnPre);
+        btnMucLuc = findViewById(R.id.btnMucluc);
     }
 
     private void VolleyJsonArrayRequest(String url) {
@@ -67,13 +97,12 @@ public class VocabularyDetailActivity extends AppCompatActivity {
                 ArrayList<VocabularyDTO> foundList = new ArrayList<>();
                 for (int i = 0; i < vocabularies.size(); i++){
                     String topic = vocabularies.get(i).getTopic();
-                    if(findTopic.contains(topic)) {
+                    if(findTopic.equals(topic)) {
                         foundList.add(vocabularies.get(i));
                     }
                 }
-                System.out.println(foundList.size() + "Size");
-                VocabularyDetailAdapter vocabularyAdapter = new VocabularyDetailAdapter(VocabularyDetailActivity.this,foundList);
-                mListViewDetail.setAdapter(vocabularyAdapter);
+                pagerAdapter = new VocabularyDetailAdapter(VocabularyDetailActivity.this, foundList);
+                mViewPager.setAdapter(pagerAdapter);
             }
         }, new Response.ErrorListener() {
             @Override

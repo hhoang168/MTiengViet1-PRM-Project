@@ -39,12 +39,13 @@ public class VocabularyAdapter extends BaseAdapter {
         LayoutInflater inflater = activity.getLayoutInflater();
         view = inflater.inflate(R.layout.vocabulary_item,null);
         final Button button = view.findViewById(R.id.btnCard);
-        button.setText("Bài " + vocabularies.get(i).getTopic().replace("_",": "));
+        button.setText("Bài " + vocabularies.get(i).getTopic());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, VocabularyDetailActivity.class);
-                intent.putExtra("hidetopic",button.getText().toString().replace(": ", "_"));
+                intent.putExtra("hidetopic",button.getText().toString().replaceFirst(".*?(\\d+).*", "$1"));
+                System.out.println(button.getText().toString().replaceFirst(".*?(\\d+).*", "$1"));
                 activity.startActivity(intent);
             }
         });

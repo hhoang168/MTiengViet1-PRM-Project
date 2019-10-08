@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HocTuVung">
+    tools:context=".VocabularyDetailActivity">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cloud"/>
+        android:background="@drawable/cloud"/>
 
     <ImageView
         android:layout_width="430dp"
@@ -27,14 +27,14 @@
 
     <TextView
         android:id="@+id/txtBaiHoc"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="235dp"
+        android:layout_marginStart="20dp"
         android:layout_marginBottom="684dp"
-        android:text="Bài 3: be bé"
-        android:textSize="25dp"
-        android:textStyle="bold"
         android:fontFamily="@font/sf_pro_display_bold"
+        android:text="Bài 3: be bé"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,7 +45,7 @@
         android:layout_width="105dp"
         android:layout_height="30dp"
         android:layout_marginEnd="19dp"
-        android:layout_marginBottom="684dp"
+        android:layout_marginBottom="695dp"
         android:scaleType="fitXY"
         android:text="Mục Lục"
         android:drawableRight="@drawable/outline_menu_white_18dp"
@@ -53,7 +53,7 @@
         android:textAllCaps="false"
         android:textStyle="bold"
         android:background="#2196F3"
-        android:textSize="12dp"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -61,16 +61,53 @@
         app:layout_constraintRight_toRightOf="parent"
         android:id="@+id/btnMucluc"/>
 
-    <ListView
-        android:id="@+id/mListViewDetail"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/mViewPager"
         android:layout_width="match_parent"
-        android:layout_height="660dp"
+        android:layout_height="600dp"
+        android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-    </ListView>
+    </androidx.viewpager.widget.ViewPager>
+
+    <Button
+        android:id="@+id/btnPre"
+        android:layout_width="125dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="205dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/button_left_shape"
+        android:fontFamily="@font/baloo_thambi"
+        android:text="Trở về"
+        android:textColor="#1e88e5"
+        android:textSize="15dp"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="125dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/button_right_shape"
+        android:fontFamily="@font/baloo_thambi"
+        android:text="Tiếp theo"
+        android:textColor="#1e88e5"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

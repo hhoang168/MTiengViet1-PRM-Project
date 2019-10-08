@@ -1,24 +1,29 @@
 package com.example.tiengviet1;
 
-import android.app.Activity;
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+
 import com.bumptech.glide.Glide;
 
+import java.io.IOException;
 import java.util.List;
 
-public class VocabularyDetailAdapter extends BaseAdapter {
+public class VocabularyDetailAdapter extends PagerAdapter {
 
-    private Activity activity;
+    private Context context;
     private List<VocabularyDTO> vocabularies;
 
-    public VocabularyDetailAdapter(Activity activity, List<VocabularyDTO> vocabularies) {
-        this.activity = activity;
+    public VocabularyDetailAdapter(Context context, List<VocabularyDTO> vocabularies) {
+        this.context = context;
         this.vocabularies = vocabularies;
     }
 
@@ -27,24 +32,40 @@ public class VocabularyDetailAdapter extends BaseAdapter {
         return vocabularies.size();
     }
 
+    @NonNull
     @Override
-    public Object getItem(int i) {
-        return vocabularies.get(i);
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
+        View itemView = LayoutInflater.from(context).inflate(R.layout.fragment_vocabulary_detail,container,false);
+        TextView txtChuCai = itemView.findViewById(R.id.txtChuCai);
+        ImageView imgMota = itemView.findViewById(R.id.imgMota);
+        ImageView btnSound = itemView.findViewById(R.id.imgAmThanh);
+        txtChuCai.setText(vocabularies.get(position).getDescription());
+        Glide.with(itemView).load(vocabularies.get(position).getImage().getImgPath()).into(imgMota);
+        btnSound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MediaPlayer mediaPlayer = new MediaPlayer();
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                try {
+                    mediaPlayer.setDataSource(vocabularies.get(position).getImage().getAudioPath());
+                    mediaPlayer.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mediaPlayer.start();
+            }
+        });
+        container.addView(itemView);
+        return itemView;
     }
 
     @Override
-    public long getItemId(int i) {
-        return i;
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+        container.removeView((View) object);
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater inflater = activity.getLayoutInflater();
-        view = inflater.inflate(R.layout.vocabulary_detail_item,null);
-        TextView txtChuCai = view.findViewById(R.id.txtChuCai);
-        ImageView imgMota = view.findViewById(R.id.imgMota);
-        Glide.with(view).load(vocabularies.get(i).getImage().getImgPath()).into(imgMota);
-        txtChuCai.setText(vocabularies.get(i).getDescription());
-        return view;
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        return view == object;
     }
 }
