@@ -39,7 +39,7 @@ public class VocabularyDetailActivity extends AppCompatActivity {
         final Intent intent = this.getIntent();
         setUpView();
         findTopic = intent.getStringExtra("hidetopic");
-        txtBaiHoc.setText("Bài " + findTopic);
+        txtBaiHoc.setText(findTopic);
         VolleyJsonArrayRequest(vocabularyUrl);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class VocabularyDetailActivity extends AppCompatActivity {
                 ArrayList<VocabularyDTO> foundList = new ArrayList<>();
                 for (int i = 0; i < vocabularies.size(); i++){
                     String topic = vocabularies.get(i).getTopic();
-                    if(findTopic.equals(topic)) {
+                    if(findTopic.contains(topic)) {
                         foundList.add(vocabularies.get(i));
                     }
                 }

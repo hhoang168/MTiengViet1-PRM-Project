@@ -44,8 +44,7 @@ public class VocabularyAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, VocabularyDetailActivity.class);
-                intent.putExtra("hidetopic",button.getText().toString().replaceFirst(".*?(\\d+).*", "$1"));
-                System.out.println(button.getText().toString().replaceFirst(".*?(\\d+).*", "$1"));
+                intent.putExtra("hidetopic",button.getText().toString());
                 activity.startActivity(intent);
             }
         });
