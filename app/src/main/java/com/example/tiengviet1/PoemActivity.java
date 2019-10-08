@@ -27,6 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,7 +133,10 @@ class PoemAdapter extends RecyclerView.Adapter<PoemAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, PoemDetailActivity.class);
-                intent.putExtra("dto",mPoemList.get(position));
+                ArrayList<PoemDTO> tmpList = new ArrayList<>();
+                tmpList.addAll(mPoemList);
+                intent.putExtra("index",position);
+                intent.putExtra("poemList",(Serializable) tmpList);
                 mContext.startActivity(intent);
             }
         });

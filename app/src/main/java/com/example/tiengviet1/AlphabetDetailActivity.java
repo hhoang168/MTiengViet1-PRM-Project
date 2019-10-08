@@ -47,6 +47,12 @@ public class AlphabetDetailActivity extends AppCompatActivity {
         }
 
         setUpView();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         playAudio();
     }
 

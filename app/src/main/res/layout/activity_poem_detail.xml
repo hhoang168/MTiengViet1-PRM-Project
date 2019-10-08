@@ -6,4 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".PoemDetailActivity">
 
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottomLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="bottom"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/grass" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnPoemPrevious"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="80dp"
+                android:background="@drawable/button_left_shape"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="Bài trước"
+                android:textColor="@color/light_blue"
+                android:onClick="clickForPrevPoem"/>
+
+            <Button
+                android:id="@+id/btnPoemNext"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_right_shape"
+                android:fontFamily="@font/baloo_thambi"
+                android:text="Bài sau"
+                android:textColor="@color/light_blue"
+                android:onClick="clickForNextPoem"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="650dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
