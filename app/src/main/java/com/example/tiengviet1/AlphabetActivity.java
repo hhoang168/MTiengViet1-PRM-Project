@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -28,22 +29,32 @@ public class AlphabetActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private String url = "https://prm391.herokuapp.com/api/alphabet";
     private static final String TAG = "AlphabetActivity";
+    private SwipeRefreshLayout swipeRefreshLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alphabet);
         setUpView();
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                volleyJsonArrayRequest(url);
+            }
+        });
         volleyJsonArrayRequest(url);
     }
 
     public void setUpView() {
         mRecyclerView = findViewById(R.id.recyclerView);
+        swipeRefreshLayout = findViewById(R.id.refreshLayout);
     }
 
     private void volleyJsonArrayRequest(String url) {
+        swipeRefreshLayout.setRefreshing(true);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                swipeRefreshLayout.setRefreshing(false);
                 List<AlphabetDTO> tmpList = new ArrayList<>();
                 try {
                     for (int i = 0; i < response.length(); i++) {
@@ -62,7 +73,8 @@ public class AlphabetActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "JsonArrayRequest onErrorResponse: " + error.getMessage());
+                swipeRefreshLayout.setRefreshing(false);
+                Toast.makeText(AlphabetActivity.this, "Mất kết nối mạng!", Toast.LENGTH_SHORT).show();
             }
         });
         VolleySingleton.getInstance(this).getRequestQueue().add(jsonArrayRequest);

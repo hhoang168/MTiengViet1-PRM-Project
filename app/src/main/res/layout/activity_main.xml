@@ -134,8 +134,7 @@
             <ImageView
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="210dp"
+                android:layout_gravity="bottom|right"
                 android:layout_marginTop="40dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/bird" />

@@ -29,7 +29,6 @@ public class PoemDetailFragment extends Fragment {
     private ImageView imgPoemPicture;
     private CardView mCardview;
     private MediaPlayer mediaPlayer;
-
     public PoemDetailFragment() {
         // Required empty public constructor
     }
@@ -59,28 +58,19 @@ public class PoemDetailFragment extends Fragment {
         mCardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playAudio(dto.getImage().getAudioPath());
+               mediaPlayer = MediaPlayer.create(getContext(),Uri.parse(dto.getImage().getAudioPath()));
+               mediaPlayer.start();
             }
         });
         return view;
     }
 
-    private void playAudio(String path) {
-        if (mediaPlayer !=null && mediaPlayer.isPlaying()){
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(mediaPlayer!= null && mediaPlayer.isPlaying()){
             mediaPlayer.stop();
+            mediaPlayer.release();
         }
-        mediaPlayer = MediaPlayer.create(getActivity(), Uri.parse(path));
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                try {
-                    mediaPlayer.stop();
-                    mediaPlayer.release();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        mediaPlayer.start();
     }
 }

@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +46,7 @@ public class PoemDetailActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
         mediaPlayer = MediaPlayer.create(PoemDetailActivity.this, R.raw.pop_sound);
+
     }
 
     public void clickToGetBack(View view) {
@@ -114,4 +117,6 @@ public class PoemDetailActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+
 }
+
