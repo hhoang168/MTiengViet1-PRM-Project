@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".VocabularyActivity">
+
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -12,9 +14,37 @@
         android:layout_height="300dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cloud" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:onClick="clickToGetBack"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_arrow_back" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trở về"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="50dp" />
+
+    </LinearLayout>
 
     <ImageView
         android:layout_width="430dp"
@@ -54,5 +84,7 @@
         app:layout_constraintRight_toRightOf="parent">
 
     </ListView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

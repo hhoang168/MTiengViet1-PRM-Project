@@ -17,7 +17,6 @@
 
 
         <FrameLayout
-            android:id="@+id/headLayout"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:background="@drawable/cloud"
@@ -35,8 +34,8 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:scaleType="fitXY"
                     android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
                     app:srcCompat="@drawable/ic_arrow_back" />
 
                 <TextView

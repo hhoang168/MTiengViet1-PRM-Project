@@ -84,8 +84,7 @@ public class PoemDetailActivity extends AppCompatActivity {
         bundle.putSerializable("index", (Serializable) poemList.get(index));
         detailFragment.setArguments(bundle);
 
-        fragmentTransaction.replace(R.id.contentLayout, detailFragment, null);
-        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.contentLayout, detailFragment);
         fragmentTransaction.commit();
     }
 
@@ -103,7 +102,6 @@ public class PoemDetailActivity extends AppCompatActivity {
         detailFragment.setArguments(bundle);
 
         fragmentTransaction.replace(R.id.contentLayout, detailFragment);
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 }

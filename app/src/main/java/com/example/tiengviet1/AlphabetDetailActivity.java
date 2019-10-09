@@ -1,18 +1,30 @@
 package com.example.tiengviet1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AlphabetDetailActivity extends AppCompatActivity {
@@ -22,6 +34,7 @@ public class AlphabetDetailActivity extends AppCompatActivity {
     private AlphabetDTO alphabetDTO;
     private String urlChuThuong = "";
     private String urlChuHoa = "";
+    private RecyclerView listView;
     private String[] listLetter =
             {"a", "ă", "â", "b", "c", "d", "đ", "e",
                     "ê", "g", "h", "i", "k", "l", "m", "n",
@@ -38,16 +51,23 @@ public class AlphabetDetailActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         alphabetDTO = (AlphabetDTO) intent.getSerializableExtra("dto");
         List<ImageDTO> tmpList = alphabetDTO.getListImages();
+        List<ImageDTO> listTuLienQuan = new ArrayList<>();
         for (ImageDTO dto : tmpList) {
             if (dto.getDescription().contains("viet_hoa")) {
                 urlChuHoa = dto.getImgPath();
             } else if (dto.getDescription().contains("viet_thuong")) {
                 urlChuThuong = dto.getImgPath();
+            } else {
+                listTuLienQuan.add(dto);
             }
         }
 
         setUpView();
 
+        MyCustomAdapter adapter = new
+                MyCustomAdapter(AlphabetDetailActivity.this,listTuLienQuan,alphabetDTO.getLetter());
+        listView.setLayoutManager(new LinearLayoutManager(AlphabetDetailActivity.this,LinearLayoutManager.HORIZONTAL,false));
+        listView.setAdapter(adapter);
     }
 
     @Override
@@ -63,6 +83,7 @@ public class AlphabetDetailActivity extends AppCompatActivity {
         imgChuThuong = findViewById(R.id.imgVietthuong);
         imgChuHoa = findViewById(R.id.imgViethoa);
         imgSound = findViewById(R.id.imgBtnDanhvan);
+        listView = findViewById(R.id.listTuLienQuan);
     }
 
     private void setUpView() {
@@ -75,6 +96,10 @@ public class AlphabetDetailActivity extends AppCompatActivity {
 
     private void playAudio() {
         final MediaPlayer mediaPlayer = MediaPlayer.create(this, Uri.parse(alphabetDTO.getAudioPath()));
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+        }
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -89,7 +114,7 @@ public class AlphabetDetailActivity extends AppCompatActivity {
         mediaPlayer.start();
     }
 
-    public void clickToPlayAudio(View view){
+    public void clickToPlayAudio(View view) {
         playAudio();
     }
 
@@ -120,5 +145,55 @@ public class AlphabetDetailActivity extends AppCompatActivity {
                         // Hide the nav bar and status bar
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
+    }
+}
+
+class MyCustomAdapter extends RecyclerView.Adapter<MyCustomAdapter.ViewHolder> {
+    Context context;
+    List<ImageDTO> list;
+    String letter;
+
+    public MyCustomAdapter(Context context, List<ImageDTO> list, String letter) {
+        this.context = context;
+        this.list = list;
+        this.letter = letter;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.alphabet_relation_word, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        String url = list.get(position).getImgPath();
+        Glide.with(context).load(url).into(holder.imgHinh);
+        String tmpText = list.get(position).getDescription();
+        tmpText = tmpText.substring(tmpText.indexOf("_")+1,tmpText.length());
+        int letterIndex = tmpText.indexOf(letter);
+        SpannableString ss = new SpannableString(tmpText);
+        ForegroundColorSpan fcsRed = new ForegroundColorSpan(Color.RED);
+
+        ss.setSpan(fcsRed,letterIndex,letterIndex+1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holder.txtMota.setText(ss);
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView imgHinh;
+        TextView txtMota;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imgHinh = itemView.findViewById(R.id.imgHinhLienQuan);
+            txtMota = itemView.findViewById(R.id.txtMoTa);
+        }
     }
 }

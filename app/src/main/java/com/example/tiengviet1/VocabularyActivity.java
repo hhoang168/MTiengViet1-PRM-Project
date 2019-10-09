@@ -87,6 +87,10 @@ public class VocabularyActivity extends AppCompatActivity {
         }
     }
 
+    public void clickToGetBack(View view){
+        finish();
+    }
+
     private void hideSystemUI() {
         // Enables regular immersive mode.
         // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
