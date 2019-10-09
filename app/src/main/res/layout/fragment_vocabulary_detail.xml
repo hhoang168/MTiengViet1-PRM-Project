@@ -5,27 +5,23 @@
     android:layout_height="600dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".VocabularyDetailFragment">
-
+<androidx.cardview.widget.CardView
+    android:layout_width="360dp"
+    android:layout_height="600dp"
+    android:layout_marginStart="17dp"
+    app:cardBackgroundColor="#FAFAFA"
+    app:cardCornerRadius="20dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="600dp"
-            android:src="@drawable/card_big"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <ImageView
+        <ImageButton
             android:id="@+id/imgAmThanh"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:layout_marginEnd="270dp"
+            android:layout_marginEnd="245dp"
             android:layout_marginBottom="30dp"
-            android:background="@drawable/btn_audio"
+            android:background="@drawable/vocabulary_sound_button"
+            android:src="@drawable/baseline_volume_up_black_18pt_2x"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -37,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginBottom="500dp"
+            android:layout_marginBottom="490dp"
             android:fontFamily="@font/baloo_thambi"
             android:text="Be"
             android:textSize="40sp"
@@ -49,22 +45,10 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="300dp"
-            android:layout_marginBottom="60dp"
-            android:src="@drawable/icon_audio"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <ImageView
             android:id="@+id/imgMota"
             android:layout_width="270dp"
             android:layout_height="270dp"
-            android:layout_marginEnd="60dp"
+            android:layout_marginEnd="45dp"
             android:layout_marginBottom="180dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,5 +56,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
 
 </ScrollView>

@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".VocabularyActivity">
 
-
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -23,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|top"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="45dp"
         android:layout_marginLeft="20dp"
         android:onClick="clickToGetBack"
         android:orientation="horizontal"
@@ -59,7 +57,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="156dp"
         android:fontFamily="@font/baloo_thambi"
         android:text="Học Từ Vựng"
