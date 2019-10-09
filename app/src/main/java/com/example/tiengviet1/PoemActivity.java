@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -35,7 +37,6 @@ public class PoemActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private final String URL = "https://prm391.herokuapp.com/api/poem";
     private final String TAG = "PoemActivity";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +106,8 @@ public class PoemActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
+
+
 }
 
 class PoemAdapter extends RecyclerView.Adapter<PoemAdapter.ViewHolder> {
@@ -159,4 +162,6 @@ class PoemAdapter extends RecyclerView.Adapter<PoemAdapter.ViewHolder> {
             parentLayout = itemView.findViewById(R.id.poemItemLayout);
         }
     }
+
+
 }

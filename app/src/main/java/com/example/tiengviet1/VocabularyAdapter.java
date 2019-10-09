@@ -1,7 +1,9 @@
 package com.example.tiengviet1;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +15,12 @@ import java.util.List;
 public class VocabularyAdapter extends BaseAdapter {
     private Activity activity;
     private List<VocabularyDTO> vocabularies;
+    private MediaPlayer mediaPlayer;
 
     public VocabularyAdapter(Activity activity, List<VocabularyDTO> vocabularies) {
         this.activity = activity;
         this.vocabularies = vocabularies;
+        mediaPlayer = MediaPlayer.create(activity,R.raw.book_open_sound);
     }
 
     @Override
@@ -43,6 +47,7 @@ public class VocabularyAdapter extends BaseAdapter {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mediaPlayer.start();
                 Intent intent = new Intent(activity, VocabularyDetailActivity.class);
                 intent.putExtra("hidetopic",button.getText().toString());
                 activity.startActivity(intent);

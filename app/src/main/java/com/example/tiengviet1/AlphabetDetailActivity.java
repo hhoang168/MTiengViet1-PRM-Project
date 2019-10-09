@@ -70,12 +70,6 @@ public class AlphabetDetailActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        playAudio();
-    }
-
     private void createView() {
         txtChuThuong = findViewById(R.id.txtChuthuong);
         txtChuHoa = findViewById(R.id.txtChuhoa);

@@ -25,9 +25,10 @@ import com.bumptech.glide.Glide;
  */
 public class PoemDetailFragment extends Fragment {
 
-    TextView txtPoemTitle, txtPoemContent;
-    ImageView imgPoemPicture;
-    CardView mCardview;
+    private TextView txtPoemTitle, txtPoemContent;
+    private ImageView imgPoemPicture;
+    private CardView mCardview;
+    private MediaPlayer mediaPlayer;
 
     public PoemDetailFragment() {
         // Required empty public constructor
@@ -65,7 +66,10 @@ public class PoemDetailFragment extends Fragment {
     }
 
     private void playAudio(String path) {
-        final MediaPlayer mediaPlayer = MediaPlayer.create(getActivity(), Uri.parse(path));
+        if (mediaPlayer !=null && mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+        }
+        mediaPlayer = MediaPlayer.create(getActivity(), Uri.parse(path));
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {

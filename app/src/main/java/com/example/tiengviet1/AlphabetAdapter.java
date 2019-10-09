@@ -2,6 +2,7 @@ package com.example.tiengviet1;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +16,14 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.ViewHolder> {
-    Context mContext;
-    List<AlphabetDTO> alphabetList;
+    private Context mContext;
+    private List<AlphabetDTO> alphabetList;
+    private MediaPlayer mediaPlayer;
 
     public AlphabetAdapter(Context mContext, List<AlphabetDTO> alphabetList) {
         this.mContext = mContext;
         this.alphabetList = alphabetList;
+        mediaPlayer = MediaPlayer.create(mContext, R.raw.button_sound);
     }
 
     @NonNull
@@ -38,8 +41,9 @@ public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.ViewHo
         holder.imgAlphabet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext,AlphabetDetailActivity.class);
-                intent.putExtra("dto",alphabetList.get(position));
+                mediaPlayer.start();
+                Intent intent = new Intent(mContext, AlphabetDetailActivity.class);
+                intent.putExtra("dto", alphabetList.get(position));
                 mContext.startActivity(intent);
             }
         });

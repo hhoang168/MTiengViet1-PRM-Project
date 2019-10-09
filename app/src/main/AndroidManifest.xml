@@ -13,12 +13,24 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity android:name=".PoemDetailActivity"></activity>
-        <activity android:name=".VocabularyDetailActivity" />
-        <activity android:name=".AlphabetDetailActivity" />
-        <activity android:name=".QuizActivity" />
-        <activity android:name=".PoemActivity" />
-        <activity android:name=".VocabularyActivity" />
-        <activity android:name=".AlphabetActivity" />
+        <activity
+            android:name=".VocabularyDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AlphabetDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QuizActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PoemActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".VocabularyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AlphabetActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

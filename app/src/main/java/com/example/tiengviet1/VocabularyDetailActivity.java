@@ -5,6 +5,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,7 @@ public class VocabularyDetailActivity extends AppCompatActivity {
     private static final String TAG = "VocabularyActivity";
     private PagerAdapter pagerAdapter = null;
     private ViewPager mViewPager;
+    private MediaPlayer mediaPlayer;
     TextView txtBaiHoc;
     Button btnMucLuc;
     String findTopic = "";
@@ -44,6 +46,7 @@ public class VocabularyDetailActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mediaPlayer.start();
                 mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
             }
         });
@@ -51,14 +54,14 @@ public class VocabularyDetailActivity extends AppCompatActivity {
         btnPre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mediaPlayer.start();
                 mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
             }
         });
         btnMucLuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backIntent = new Intent(VocabularyDetailActivity.this, VocabularyActivity.class);
-                startActivity(backIntent);
+                finish();
             }
         });
     }
@@ -69,6 +72,7 @@ public class VocabularyDetailActivity extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
         btnPre = findViewById(R.id.btnPre);
         btnMucLuc = findViewById(R.id.btnMucluc);
+        mediaPlayer = MediaPlayer.create(VocabularyDetailActivity.this, R.raw.book_flip_sound);
     }
 
     private void VolleyJsonArrayRequest(String url) {
@@ -91,13 +95,13 @@ public class VocabularyDetailActivity extends AppCompatActivity {
                         VocabularyDTO vocabulary = new VocabularyDTO(id, topic, description, image);
                         vocabularies.add(vocabulary);
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 ArrayList<VocabularyDTO> foundList = new ArrayList<>();
-                for (int i = 0; i < vocabularies.size(); i++){
+                for (int i = 0; i < vocabularies.size(); i++) {
                     String topic = vocabularies.get(i).getTopic();
-                    if(findTopic.contains(topic)) {
+                    if (findTopic.contains(topic)) {
                         foundList.add(vocabularies.get(i));
                     }
                 }
@@ -116,7 +120,7 @@ public class VocabularyDetailActivity extends AppCompatActivity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        if(hasFocus){
+        if (hasFocus) {
             hideSystemUI();
         }
     }

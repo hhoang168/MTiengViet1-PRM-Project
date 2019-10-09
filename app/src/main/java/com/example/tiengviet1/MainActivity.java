@@ -3,6 +3,7 @@ package com.example.tiengviet1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,8 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView btnChucai, btnTuvung, btnTho, btnKiemtra;
-
+    private ImageView btnChucai, btnTuvung, btnTho, btnKiemtra;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setUpView();
-
+        mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.bubble_sound);
 
         btnChucai.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 btnChucai.startAnimation(bounceAnim);
+
+                mediaPlayer.start();
             }
         });
 
@@ -80,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 btnTuvung.startAnimation(bounceAnim);
+
+                mediaPlayer.start();
             }
         });
 
@@ -105,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 btnTho.startAnimation(bounceAnim);
+
+                mediaPlayer.start();
             }
         });
 
@@ -130,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 btnKiemtra.startAnimation(bounceAnim);
+
+                mediaPlayer.start();
             }
         });
     }
