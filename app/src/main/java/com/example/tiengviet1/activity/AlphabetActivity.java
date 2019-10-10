@@ -30,6 +30,7 @@ public class AlphabetActivity extends AppCompatActivity {
     private String url = "https://prm391.herokuapp.com/api/alphabet";
     private static final String TAG = "AlphabetActivity";
     private SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

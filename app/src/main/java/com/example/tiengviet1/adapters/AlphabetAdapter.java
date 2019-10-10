@@ -3,6 +3,7 @@ package com.example.tiengviet1.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.ViewHo
     private Context mContext;
     private List<AlphabetDTO> alphabetList;
     private MediaPlayer mediaPlayer;
+    private long mLastClickTime = 0;
 
     public AlphabetAdapter(Context mContext, List<AlphabetDTO> alphabetList) {
         this.mContext = mContext;
@@ -44,6 +46,11 @@ public class AlphabetAdapter extends RecyclerView.Adapter<AlphabetAdapter.ViewHo
         holder.imgAlphabet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // mis-clicking prevention, using threshold of 1000 ms
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
                 mediaPlayer.start();
                 Intent intent = new Intent(mContext, AlphabetDetailActivity.class);
                 intent.putExtra("dto", alphabetList.get(position));
