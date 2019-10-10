@@ -1,4 +1,6 @@
-package com.example.tiengviet1;
+package com.example.tiengviet1.dto;
+
+import com.example.tiengviet1.dto.ImageDTO;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.example.tiengviet1;
+package com.example.tiengviet1.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,14 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.bumptech.glide.Glide;
+import com.example.tiengviet1.R;
+import com.example.tiengviet1.VolleySingleton;
+import com.example.tiengviet1.dto.PoemDTO;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

@@ -1,4 +1,4 @@
-package com.example.tiengviet1;
+package com.example.tiengviet1.adapters;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
+import com.example.tiengviet1.R;
+import com.example.tiengviet1.dto.VocabularyDTO;
 
 import java.io.IOException;
 import java.util.List;

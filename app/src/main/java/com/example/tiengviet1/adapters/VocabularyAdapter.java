@@ -1,7 +1,6 @@
-package com.example.tiengviet1;
+package com.example.tiengviet1.adapters;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.view.LayoutInflater;
@@ -9,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+
+import com.example.tiengviet1.R;
+import com.example.tiengviet1.activity.VocabularyDetailActivity;
+import com.example.tiengviet1.dto.VocabularyDTO;
 
 import java.util.List;
 
@@ -20,7 +23,7 @@ public class VocabularyAdapter extends BaseAdapter {
     public VocabularyAdapter(Activity activity, List<VocabularyDTO> vocabularies) {
         this.activity = activity;
         this.vocabularies = vocabularies;
-        mediaPlayer = MediaPlayer.create(activity,R.raw.book_open_sound);
+        mediaPlayer = MediaPlayer.create(activity, R.raw.book_open_sound);
     }
 
     @Override

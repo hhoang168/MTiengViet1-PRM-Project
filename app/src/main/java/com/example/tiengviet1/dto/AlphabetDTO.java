@@ -1,4 +1,4 @@
-package com.example.tiengviet1;
+package com.example.tiengviet1.dto;
 
 import java.io.Serializable;
 import java.util.List;

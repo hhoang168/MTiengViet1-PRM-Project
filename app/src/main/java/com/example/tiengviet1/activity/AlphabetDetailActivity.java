@@ -1,4 +1,4 @@
-package com.example.tiengviet1;
+package com.example.tiengviet1.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +19,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.tiengviet1.R;
+import com.example.tiengviet1.dto.AlphabetDTO;
+import com.example.tiengviet1.dto.ImageDTO;
 
 import java.util.ArrayList;
 import java.util.List;

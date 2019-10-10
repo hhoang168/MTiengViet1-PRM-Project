@@ -1,8 +1,10 @@
-package com.example.tiengviet1;
+package com.example.tiengviet1.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.tiengviet1.R;
 
 public class QuizActivity extends AppCompatActivity {
 

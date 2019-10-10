@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="600dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".VocabularyDetailFragment">
+    tools:context=".fragments.VocabularyDetailFragment">
 <androidx.cardview.widget.CardView
     android:layout_width="360dp"
     android:layout_height="600dp"

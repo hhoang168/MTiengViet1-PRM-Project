@@ -1,4 +1,4 @@
-package com.example.tiengviet1;
+package com.example.tiengviet1.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.tiengviet1.activity.AlphabetDetailActivity;
+import com.example.tiengviet1.R;
+import com.example.tiengviet1.dto.AlphabetDTO;
 
 import java.util.List;
 

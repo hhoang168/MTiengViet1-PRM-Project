@@ -1,80 +1,49 @@
-package com.example.tiengviet1;
+package com.example.tiengviet1.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.tiengviet1.R;
+import com.example.tiengviet1.VolleySingleton;
+import com.example.tiengviet1.adapters.VocabularyAdapter;
+import com.example.tiengviet1.dto.ImageDTO;
+import com.example.tiengviet1.dto.VocabularyDTO;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class VocabularyDetailActivity extends AppCompatActivity {
+public class VocabularyActivity extends AppCompatActivity {
 
+    private ListView mListView;
     private String vocabularyUrl = "https://prm391.herokuapp.com/api/vocabulary";
     private static final String TAG = "VocabularyActivity";
-    private PagerAdapter pagerAdapter = null;
-    private ViewPager mViewPager;
-    private MediaPlayer mediaPlayer;
-    TextView txtBaiHoc;
-    Button btnMucLuc;
-    String findTopic = "";
-    Button btnNext, btnPre;
+    Button btnCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vocabulary_detail);
-        final Intent intent = this.getIntent();
+        setContentView(R.layout.activity_vocabulary);
         setUpView();
-        findTopic = intent.getStringExtra("hidetopic");
-        txtBaiHoc.setText(findTopic);
         VolleyJsonArrayRequest(vocabularyUrl);
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mediaPlayer.start();
-                mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1, true);
-            }
-        });
-
-        btnPre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mediaPlayer.start();
-                mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
-            }
-        });
-        btnMucLuc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
-    private void setUpView() {
-        mViewPager = (ViewPager) findViewById(R.id.mViewPager);
-        txtBaiHoc = findViewById(R.id.txtBaiHoc);
-        btnNext = findViewById(R.id.btnNext);
-        btnPre = findViewById(R.id.btnPre);
-        btnMucLuc = findViewById(R.id.btnMucluc);
-        mediaPlayer = MediaPlayer.create(VocabularyDetailActivity.this, R.raw.book_flip_sound);
+    public void setUpView() {
+        mListView = findViewById(R.id.mListView);
     }
-
     private void VolleyJsonArrayRequest(String url) {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
@@ -95,18 +64,16 @@ public class VocabularyDetailActivity extends AppCompatActivity {
                         VocabularyDTO vocabulary = new VocabularyDTO(id, topic, description, image);
                         vocabularies.add(vocabulary);
                     }
-                } catch (Exception e) {
+                }catch (Exception e){
                     e.printStackTrace();
                 }
-                ArrayList<VocabularyDTO> foundList = new ArrayList<>();
-                for (int i = 0; i < vocabularies.size(); i++) {
-                    String topic = vocabularies.get(i).getTopic();
-                    if (findTopic.contains(topic)) {
-                        foundList.add(vocabularies.get(i));
-                    }
-                }
-                pagerAdapter = new VocabularyDetailAdapter(VocabularyDetailActivity.this, foundList);
-                mViewPager.setAdapter(pagerAdapter);
+                List<VocabularyDTO> tempList = new ArrayList<>();
+                Set<VocabularyDTO> uniqueElements = new HashSet<VocabularyDTO>(vocabularies);
+                tempList.clear();
+                tempList.addAll(uniqueElements);
+                Collections.sort(tempList);
+                VocabularyAdapter vocabularyAdapter = new VocabularyAdapter(VocabularyActivity.this,tempList);
+                mListView.setAdapter(vocabularyAdapter);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -120,9 +87,13 @@ public class VocabularyDetailActivity extends AppCompatActivity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
+        if(hasFocus){
             hideSystemUI();
         }
+    }
+
+    public void clickToGetBack(View view){
+        finish();
     }
 
     private void hideSystemUI() {
@@ -141,6 +112,4 @@ public class VocabularyDetailActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
-
-
 }

@@ -5,22 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.tiengviet1.activity.AlphabetActivity;
+import com.example.tiengviet1.activity.PoemActivity;
+import com.example.tiengviet1.activity.QuizActivity;
+import com.example.tiengviet1.activity.VocabularyActivity;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView btnChucai, btnTuvung, btnTho, btnKiemtra;

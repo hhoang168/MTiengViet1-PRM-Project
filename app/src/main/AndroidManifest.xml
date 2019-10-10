@@ -12,24 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PoemDetailActivity"></activity>
+        <activity android:name=".activity.PoemDetailActivity"></activity>
         <activity
-            android:name=".VocabularyDetailActivity"
+            android:name=".activity.VocabularyDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AlphabetDetailActivity"
+            android:name=".activity.AlphabetDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".QuizActivity"
+            android:name=".activity.QuizActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PoemActivity"
+            android:name=".activity.PoemActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".VocabularyActivity"
+            android:name=".activity.VocabularyActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AlphabetActivity"
+            android:name=".activity.AlphabetActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".MainActivity">
             <intent-filter>
