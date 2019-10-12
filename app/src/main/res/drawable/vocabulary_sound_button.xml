@@ -3,10 +3,10 @@
     android:shape="rectangle">
     <item>
         <selector>
-            <item android:state_pressed="true">
+            <item android:state_pressed="true">u
                 <shape>
                     <solid android:color="#9BCEE6" />
-                    <corners android:radius="30dp" />
+                    <corners android:radius="20dp" />
                 </shape>
             </item>
         </selector>
@@ -14,7 +14,7 @@
             <item android:state_pressed="false">
                 <shape>
                     <solid android:color="#8DA09E9C" />
-                    <corners android:radius="30dp" />
+                    <corners android:radius="20dp" />
                     <padding
                         android:bottom="10dp"
                         android:left="20dp"
