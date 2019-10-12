@@ -58,7 +58,7 @@ public class PoemDetailFragment extends Fragment {
         mCardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               mediaPlayer = MediaPlayer.create(getContext(),Uri.parse(dto.getImage().getAudioPath()));
+               mediaPlayer = setUpMedia(dto.getImage().getAudioPath());
                mediaPlayer.start();
             }
         });
@@ -72,5 +72,13 @@ public class PoemDetailFragment extends Fragment {
             mediaPlayer.stop();
             mediaPlayer.release();
         }
+    }
+
+    private MediaPlayer setUpMedia(String url){
+        if(mediaPlayer != null && mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+            mediaPlayer.release();
+        }
+        return MediaPlayer.create(getContext(),Uri.parse(url));
     }
 }
