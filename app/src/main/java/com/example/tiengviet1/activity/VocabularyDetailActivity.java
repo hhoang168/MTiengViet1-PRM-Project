@@ -25,11 +25,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VocabularyDetailActivity extends AppCompatActivity {
 
-    private String vocabularyUrl = "https://prm391.herokuapp.com/api/vocabulary";
-    private static final String TAG = "VocabularyActivity";
     private PagerAdapter pagerAdapter = null;
     private ViewPager mViewPager;
     private MediaPlayer mediaPlayer;
@@ -37,6 +36,7 @@ public class VocabularyDetailActivity extends AppCompatActivity {
     Button btnMucLuc;
     String findTopic = "";
     Button btnNext, btnPre;
+    List<VocabularyDTO> vocabularies = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,17 @@ public class VocabularyDetailActivity extends AppCompatActivity {
         final Intent intent = this.getIntent();
         setUpView();
         findTopic = intent.getStringExtra("hidetopic");
+        vocabularies = (List<VocabularyDTO>) intent.getSerializableExtra("listVocabulary");
         txtBaiHoc.setText(findTopic);
-        VolleyJsonArrayRequest(vocabularyUrl);
+        ArrayList<VocabularyDTO> tempList = new ArrayList<>();
+        for (int i = 0; i < vocabularies.size(); i++) {
+            String topic = vocabularies.get(i).getTopic();
+            if (findTopic.contains(topic)) {
+                tempList.add(vocabularies.get(i));
+            }
+        }
+        pagerAdapter = new VocabularyDetailAdapter(VocabularyDetailActivity.this, tempList);
+        mViewPager.setAdapter(pagerAdapter);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,48 +86,6 @@ public class VocabularyDetailActivity extends AppCompatActivity {
         btnPre = findViewById(R.id.btnPre);
         btnMucLuc = findViewById(R.id.btnMucluc);
         mediaPlayer = MediaPlayer.create(VocabularyDetailActivity.this, R.raw.book_flip_sound);
-    }
-
-    private void VolleyJsonArrayRequest(String url) {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                ArrayList<VocabularyDTO> vocabularies = new ArrayList<>();
-                try {
-                    for (int i = 0; i < response.length(); i++) {
-                        JSONObject jsonObject = (JSONObject) response.get(i);
-                        int id = jsonObject.getInt("id");
-                        String topic = jsonObject.getString("topic");
-                        String description = jsonObject.getString("description");
-                        JSONObject jsonObject1 = jsonObject.getJSONObject("image");
-                        int imgID = jsonObject1.getInt("id");
-                        String imgPath = jsonObject1.getString("imgPath");
-                        String audioPath = jsonObject1.getString("audioPath");
-                        String imgDescription = jsonObject1.getString("description");
-                        ImageDTO image = new ImageDTO(imgID, imgPath, audioPath, imgDescription);
-                        VocabularyDTO vocabulary = new VocabularyDTO(id, topic, description, image);
-                        vocabularies.add(vocabulary);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                ArrayList<VocabularyDTO> foundList = new ArrayList<>();
-                for (int i = 0; i < vocabularies.size(); i++) {
-                    String topic = vocabularies.get(i).getTopic();
-                    if (findTopic.contains(topic)) {
-                        foundList.add(vocabularies.get(i));
-                    }
-                }
-                pagerAdapter = new VocabularyDetailAdapter(VocabularyDetailActivity.this, foundList);
-                mViewPager.setAdapter(pagerAdapter);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "JsonArrayRequest onErrorResponse: " + error.getMessage());
-            }
-        });
-        VolleySingleton.getInstance(this).getRequestQueue().add(jsonArrayRequest);
     }
 
     @Override

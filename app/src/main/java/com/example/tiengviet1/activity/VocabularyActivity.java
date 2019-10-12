@@ -67,12 +67,7 @@ public class VocabularyActivity extends AppCompatActivity {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-                List<VocabularyDTO> tempList = new ArrayList<>();
-                Set<VocabularyDTO> uniqueElements = new HashSet<VocabularyDTO>(vocabularies);
-                tempList.clear();
-                tempList.addAll(uniqueElements);
-                Collections.sort(tempList);
-                VocabularyAdapter vocabularyAdapter = new VocabularyAdapter(VocabularyActivity.this,tempList);
+                VocabularyAdapter vocabularyAdapter = new VocabularyAdapter(VocabularyActivity.this,vocabularies);
                 mListView.setAdapter(vocabularyAdapter);
             }
         }, new Response.ErrorListener() {
