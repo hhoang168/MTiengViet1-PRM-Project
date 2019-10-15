@@ -6,152 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/headLayout"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/mainFragment"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/lblChucai"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/baloo_thambi"
-            android:text="Bảng chữ cái"
-            android:textColor="#090808"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/imgChucai"
-            app:layout_constraintStart_toStartOf="@+id/imgChucai"
-            app:layout_constraintTop_toBottomOf="@+id/imgChucai" />
-
-        <TextView
-            android:id="@+id/lblTuvung"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/baloo_thambi"
-            android:text="Học từ vựng"
-            android:textColor="#0F0F0F"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/imgTuvung"
-            app:layout_constraintTop_toBottomOf="@+id/imgTuvung" />
-
-        <TextView
-            android:id="@+id/lblTho"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/baloo_thambi"
-            android:text="Thơ"
-            android:textColor="#161515"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/imgTho"
-            app:layout_constraintStart_toStartOf="@+id/imgTho"
-            app:layout_constraintTop_toBottomOf="@+id/imgTho" />
-
-        <TextView
-            android:id="@+id/lblKiemtra"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/baloo_thambi"
-            android:text="Kiểm tra"
-            android:textColor="#090909"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/imgKiemtra"
-            app:layout_constraintTop_toBottomOf="@+id/imgKiemtra" />
-
-        <ImageView
-            android:id="@+id/imgKiemtra"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imgTho"
-            app:layout_constraintTop_toBottomOf="@+id/lblTuvung"
-            app:srcCompat="@drawable/btn_kiemtra" />
-
-        <ImageView
-            android:id="@+id/imgTho"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toStartOf="@+id/imgKiemtra"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblChucai"
-            app:srcCompat="@drawable/btn_tho" />
-
-        <ImageView
-            android:id="@+id/imgChucai"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="32dp"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toStartOf="@+id/imgTuvung"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/headLayout"
-            app:srcCompat="@drawable/btn_chucai" />
-
-        <ImageView
-            android:id="@+id/imgTuvung"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imgChucai"
-            app:layout_constraintTop_toBottomOf="@+id/headLayout"
-            app:srcCompat="@drawable/btn_tuvung" />
-
-
-        <FrameLayout
-            android:id="@+id/headLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/imgSky"
-                android:layout_width="wrap_content"
-                android:layout_height="220dp"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/cloud" />
-
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="bottom|right"
-                android:layout_marginTop="40dp"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/bird" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="120dp"
-                android:fontFamily="@font/baloo_thambi"
-                android:text="Danh Mục"
-                android:textColor="@color/colorAccent"
-                android:textSize="40sp"
-                android:textStyle="bold" />
-        </FrameLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomBar"
