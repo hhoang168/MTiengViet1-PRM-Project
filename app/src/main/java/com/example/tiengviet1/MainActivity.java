@@ -10,22 +10,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.tiengviet1.activity.AlphabetActivity;
 import com.example.tiengviet1.activity.PoemActivity;
 import com.example.tiengviet1.activity.QuizActivity;
 import com.example.tiengviet1.activity.VocabularyActivity;
+import com.example.tiengviet1.fragments.GameFragment;
 import com.example.tiengviet1.fragments.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
-
+    ImageButton btnLearn, btnGame;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setUpView();
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         HomeFragment homeFragment = new HomeFragment();
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    private void setUpView(){
+        btnGame = findViewById(R.id.btnGame);
+        btnLearn = findViewById(R.id.btnLearn);
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -58,5 +64,25 @@ public class MainActivity extends AppCompatActivity {
                         // Hide the nav bar and status bar
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
+    }
+
+    public void clickToGame(View view) {
+        fragmentManager = this.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        GameFragment gameFragment = new GameFragment();
+        fragmentTransaction.replace(R.id.mainFragment, gameFragment, null);
+        fragmentTransaction.commit();
+        btnGame.setBackgroundResource(R.drawable.choi_screenhoc);
+        btnLearn.setBackgroundResource(R.drawable.hoc_screenhoc);
+    }
+
+    public void clickToLearn(View view) {
+        fragmentManager = this.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        HomeFragment homeFragment = new HomeFragment();
+        fragmentTransaction.replace(R.id.mainFragment, homeFragment, null);
+        fragmentTransaction.commit();
+        btnGame.setBackgroundResource(R.drawable.choi_screenchoi);
+        btnLearn.setBackgroundResource(R.drawable.hoc_screenchoi);
     }
 }
