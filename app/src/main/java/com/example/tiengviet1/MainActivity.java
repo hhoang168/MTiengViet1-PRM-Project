@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickToGame(View view) {
-        fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         GameFragment gameFragment = new GameFragment();
         fragmentTransaction.replace(R.id.mainFragment, gameFragment, null);
@@ -78,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickToLearn(View view) {
-        fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         HomeFragment homeFragment = new HomeFragment();
         fragmentTransaction.replace(R.id.mainFragment, homeFragment, null);
