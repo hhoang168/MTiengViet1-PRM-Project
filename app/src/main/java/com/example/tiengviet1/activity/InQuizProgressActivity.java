@@ -95,12 +95,12 @@ public class InQuizProgressActivity extends AppCompatActivity {
         String alertTitle;
         if(btnText.equals(rightAnswer)){
 
-            alertTitle = "Correct!";
+            alertTitle = "Chính xác!";
             markCount++;
             txtMark.setText(markCount+"/10 Điểm");
         }else{
 
-            alertTitle = "Incorrect";
+            alertTitle = "Sai rồi";
 
         }
 
