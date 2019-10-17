@@ -23,6 +23,7 @@ import com.example.tiengviet1.fragments.HomeFragment;
 public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     ImageButton btnLearn, btnGame;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void setUpView(){
+    private void setUpView() {
         btnGame = findViewById(R.id.btnGame);
         btnLearn = findViewById(R.id.btnLearn);
     }
@@ -72,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
         GameFragment gameFragment = new GameFragment();
         fragmentTransaction.replace(R.id.mainFragment, gameFragment, null);
         fragmentTransaction.commit();
-        btnGame.setBackgroundResource(R.drawable.choi_screenhoc);
-        btnLearn.setBackgroundResource(R.drawable.hoc_screenhoc);
+        btnGame.setBackgroundResource(R.drawable.choi_screenchoi);
+        btnLearn.setBackgroundResource(R.drawable.hoc_screenchoi);
     }
 
     public void clickToLearn(View view) {
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         HomeFragment homeFragment = new HomeFragment();
         fragmentTransaction.replace(R.id.mainFragment, homeFragment, null);
         fragmentTransaction.commit();
-        btnGame.setBackgroundResource(R.drawable.choi_screenchoi);
-        btnLearn.setBackgroundResource(R.drawable.hoc_screenchoi);
+        btnGame.setBackgroundResource(R.drawable.choi_screenhoc);
+        btnLearn.setBackgroundResource(R.drawable.hoc_screenhoc);
     }
 }
