@@ -39,8 +39,6 @@ public class ResultTestActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent=new Intent(ResultTestActivity.this,QuizActivity.class);
-        startActivity(intent);
         finish();
     }
 
@@ -64,6 +62,5 @@ public class ResultTestActivity extends AppCompatActivity {
 
     public void clickToExit(View view) {
         onBackPressed();
-
     }
 }

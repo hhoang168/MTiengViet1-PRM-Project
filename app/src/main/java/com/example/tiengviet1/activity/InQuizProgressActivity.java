@@ -114,6 +114,7 @@ public class InQuizProgressActivity extends AppCompatActivity {
                     Intent intent = new Intent(InQuizProgressActivity.this, ResultTestActivity.class);
                     intent.putExtra("finalMark", markCount);
                     startActivity(intent);
+                    finish();
                 }else{
                     quizCount++;
                     showNextQuestion();
