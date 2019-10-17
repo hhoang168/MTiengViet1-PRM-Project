@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.PoemDetailActivity"></activity>
+        <activity android:name=".activity.GameResultActivity"></activity>
+        <activity android:name=".activity.TrucXanhGameActivity" />
+        <activity android:name=".activity.PoemDetailActivity" />
         <activity
             android:name=".activity.VocabularyDetailActivity"
             android:screenOrientation="portrait" />

@@ -99,13 +99,14 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <Button
+            android:id="@+id/btnPlayGame"
             android:layout_width="85dp"
             android:layout_height="35dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="136dp"
+            android:background="@drawable/sound_button_shape"
             android:text="Chơi"
             android:textSize="15dp"
-            android:background="@drawable/sound_button_shape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
