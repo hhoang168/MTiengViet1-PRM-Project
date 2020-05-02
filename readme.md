@@ -1,6 +1,7 @@
 # TiengViet1
 
 ![Main Screen](https://github.com/hhoang168/MverTiengViet1_PRMProject/blob/master/TiengViet1Pic/Picture1.png)
+Format: ![Alt Text](url)
 ![Alphabet Screen](https://github.com/hhoang168/MverTiengViet1_PRMProject/blob/master/TiengViet1Pic/Picture2.png)
 ![Alphabet Detail Screen](https://github.com/hhoang168/MverTiengViet1_PRMProject/blob/master/TiengViet1Pic/Picture3.png)
 ![Vocab Screen](https://github.com/hhoang168/MverTiengViet1_PRMProject/blob/master/TiengViet1Pic/Picture4.png)
