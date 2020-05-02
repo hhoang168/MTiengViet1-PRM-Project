@@ -1,3 +1,3 @@
 # TiengViet1
 
-![Main Screen](https://drive.google.com/open?id=1Y1haG8baCu5qFUD0TjU-D2sEbPdtMenS)
+![Main Screen](https://github.com/hhoang168/MverTiengViet1_PRMProject/blob/master/TiengViet1Pic/Picture1.png)
