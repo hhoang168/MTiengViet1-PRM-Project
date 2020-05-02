@@ -1,3 +1,3 @@
 # TiengViet1
 # Main Screen
-![smiley](TiengViet1Pic/Picture1.png){:width="300px"}
+![](TiengViet1Pic/Picture1.png){:height="36px" width="300px"}
